@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   ethereum:
-    image: settlemint/mintnet:latest
+    image: ahester57/test:dev
     ports:
       - '8545:8545'
       - '8546:8546'
@@ -11,8 +11,8 @@ services:
   net-intelligence-api:
     image: settlemint/eth-net-intelligence-api
     environment:
-      CONTACT_DETAILS: i-support@mintnet.com
-      INSTANCE_NAME: My awesome Node (add a company name or location)
+      CONTACT_DETAILS: austin@blockarray.com
+      INSTANCE_NAME: blockarray MN
       LISTENING_PORT: '30311'
       RPC_HOST: ethereum
       RPC_PORT: '8545'

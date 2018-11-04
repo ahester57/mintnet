@@ -1,6 +1,6 @@
 [parity]
 chain = "/etc/mintnet/mintnet.json"
-base_path = "/mnt/io.parity.ethereum"
+base_path = "/home/parity/io.parity.ethereum"
 
 [websockets]
 hosts = ["all"]
@@ -19,9 +19,6 @@ fat_db = "on"
 pruning = "archive"
 # Compute and Store tracing data. (Enables trace_* APIs).
 tracing = "on"
-
-[dapps]
-disable = true
 
 [network]
 reserved_only = true
