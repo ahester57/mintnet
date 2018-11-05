@@ -3,20 +3,26 @@ version: '3.3'
 services:
   ethereum:
     image: ahester57/test:dev
+    deploy:
+      replicas: 2
     ports:
       - '8545:8545'
       - '8546:8546'
       - '30311:30311'
       - '30311:30311/udp'
-  net-intelligence-api:
-    image: settlemint/eth-net-intelligence-api
-    environment:
-      CONTACT_DETAILS: austin@blockarray.com
-      INSTANCE_NAME: blockarray MN
-      LISTENING_PORT: '30311'
-      RPC_HOST: ethereum
-      RPC_PORT: '8545'
-      WS_SECRET: settlemint
-      WS_SERVER: wss://stats.mintnet.settlemint.com
-    links:
-      - ethereum:ethereum
+    networks:
+      - webnet
+  visualizer:
+    image: dockersamples/visualizer:stable
+    ports:
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+    networks:
+      - webnet
+networks:
+  webnet:
+    

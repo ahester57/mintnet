@@ -9,6 +9,8 @@ BASE_PATH=${BASE_PATH:-'/home/parity/io.parity.ethereum'}
     --jsonrpc-port=$JSONRPC_PORT \
     --port=$NETWORK_PORT \
     --ws-port=$WEBSOCKETS_PORT \
-    --jsonrpc-cors all \
     --db-path $BASE_PATH/chains \
-    --keys-path $BASE_PATH/keys
+    --keys-path $BASE_PATH/keys \
+    --jsonrpc-cors all \
+    --ws-origins all \
+    --unsafe-expose
