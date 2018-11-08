@@ -1,16 +1,18 @@
 [parity]
-chain = "/etc/mintnet/mintnet.json"
-base_path = "/home/parity/io.parity.ethereum"
+chain = "/etc/stinet/mynet.json"
+base_path = "$HOME/.stinet/io.parity.ethereum"
 
 [websockets]
+port = 8450
 hosts = ["all"]
 origins = ["all"]
 apis = ["web3", "eth", "net", "parity", "traces", "rpc", "signer", "personal", "parity_accounts", "parity_set"]
 
 [rpc]
+port = 8540
+hosts = ["all"]
 cors = ["all"]
 apis = ["web3", "eth", "net", "parity", "traces", "rpc", "signer", "personal", "parity_accounts", "parity_set"]
-hosts = ["all"]
 
 [footprint]
 # Enables Fat DB
@@ -20,6 +22,6 @@ pruning = "archive"
 # Compute and Store tracing data. (Enables trace_* APIs).
 tracing = "on"
 
-[network]
-reserved_only = true
-reserved_peers = "/etc/mintnet/reservedpeers.txt"
+#[network]
+#reserved_only = true
+#reserved_peers = "/etc/stinet/reservedpeers.txt"

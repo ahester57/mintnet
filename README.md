@@ -6,7 +6,6 @@ Repository for the client to join the [**MintNet**](https://stats.mintnet.settle
 [![Docker Automated build](https://img.shields.io/docker/automated/settlemint/mintnet.svg)](https://hub.docker.com/r/settlemint/mintnet/)
 [![Docker Build Status](https://img.shields.io/docker/build/settlemint/mintnet.svg)](https://hub.docker.com/r/settlemint/mintnet/)
 
-MintNet is an open, Proof-of-Authority, Ethereum network with 5 second block times and no gas costs. It is free to use, open to join, now go out and BUIDL!
 
 ## About
 

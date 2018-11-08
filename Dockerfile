@@ -1,21 +1,26 @@
 FROM parity/parity:v2.1.4
 
-RUN mkdir -p /home/parity/io.parity.ethereum/
-VOLUME ["/home/parity/io.parity.ethereum"]
+ARG BASE_PATH=/home/parity/.stinet/io.parity.ethereum
+ARG CONFIG_PATH=/etc/stinet
+ENV BASE_PATH=$BASE_PATH
 
-ENTRYPOINT ["/home/parity/entrypoint.sh"]
-#ENTRYPOINT ["/home/parity/bin/parity"]
+RUN mkdir -p $BASE_PATH
+VOLUME [$BASE_PATH]
+
+EXPOSE 30311
+EXPOSE 30303
+EXPOSE 8540
+EXPOSE 8450
+
+ENTRYPOINT ["/entrypoint.sh"]
 
 USER root
-RUN mkdir -p /etc/mintnet
-COPY ./reservedpeers.txt /etc/mintnet/reservedpeers.txt
-COPY ./mintnet.toml /etc/mintnet/mintnet.toml
-COPY ./mintnet.json /etc/mintnet/mintnet.json
-COPY ./node.pwds /etc/mintnet/node.pwds
-COPY ./entrypoint.sh /home/parity/entrypoint.sh
+RUN mkdir -p $CONFIG_PATH
+COPY ./reservedpeers.txt $CONFIG_PATH/reservedpeers.txt
+COPY ./mynet.toml $CONFIG_PATH/mynet.toml
+COPY ./mynet.json $CONFIG_PATH/mynet.json
+COPY ./node.pwds $CONFIG_PATH/node.pwds
+COPY ./entrypoint.sh /entrypoint.sh
 
-RUN chmod a+x /home/parity/entrypoint.sh
-#RUN chown -hR parity /etc/mintnet
-#RUN chown -hR parity /mnt/io.parity.ethereum
-#RUN ls -l /mnt/
+RUN chmod a+x /entrypoint.sh
 USER parity
