@@ -8,10 +8,11 @@ ENTRYPOINT ["/home/parity/entrypoint.sh"]
 
 USER root
 RUN mkdir -p /etc/mintnet
-ADD ./reservedpeers.txt /etc/mintnet/reservedpeers.txt
-ADD ./mintnet.toml /etc/mintnet/mintnet.toml
-ADD ./mintnet.json /etc/mintnet/mintnet.json
-ADD ./entrypoint.sh /home/parity/entrypoint.sh
+COPY ./reservedpeers.txt /etc/mintnet/reservedpeers.txt
+COPY ./mintnet.toml /etc/mintnet/mintnet.toml
+COPY ./mintnet.json /etc/mintnet/mintnet.json
+COPY ./node.pwds /etc/mintnet/node.pwds
+COPY ./entrypoint.sh /home/parity/entrypoint.sh
 
 RUN chmod a+x /home/parity/entrypoint.sh
 #RUN chown -hR parity /etc/mintnet

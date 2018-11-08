@@ -2,9 +2,11 @@ version: '3.3'
 
 services:
   ethereum:
-    image: ahester57/test:dev
+    image: ahester57/parity:latest
     deploy:
       replicas: 2
+      restart_policy:
+        condition: on-failure
     ports:
       - '8545:8545'
       - '8546:8546'
@@ -12,17 +14,17 @@ services:
       - '30311:30311/udp'
     networks:
       - webnet
-  visualizer:
-    image: dockersamples/visualizer:stable
+  ipfs:
+    image: ahester57/ipfs:latest
     ports:
-      - "8080:8080"
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "4001:4001"
     deploy:
-      placement:
-        constraints: [node.role == manager]
+      replicas: 2
+      restart_policy:
+        condition: on-failure
     networks:
       - webnet
 networks:
   webnet:
-    
+volumes:
+  myvol:
